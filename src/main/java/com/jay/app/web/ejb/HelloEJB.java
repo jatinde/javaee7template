@@ -1,8 +1,9 @@
 package com.jay.app.web.ejb;
 
 import javax.ejb.Local;
+import javax.ejb.Remote;
 
-@Local
+@Remote
 public interface HelloEJB {
 
     public String sayHello(String name);
