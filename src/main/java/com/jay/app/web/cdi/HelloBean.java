@@ -14,14 +14,30 @@ public class HelloBean implements Serializable {
     @EJB
     private HelloEJB helloEJB;
 
-    private String gretting;
 
-    public String sayHello(String name) {
-        return helloEJB.sayHello(name);
+    private String name;
+
+    private String greet;
+
+    public String sayHello() {
+        return helloEJB.sayHello(this.name);
     }
 
-    public String getGretting() {
-        gretting = this.sayHello("Jatinder");
-        return gretting;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGreet() {
+        if(this.name == null || this.name.trim().equals("")){
+            greet = "";
+        } else {
+            greet = this.sayHello();
+        }
+        return greet;
     }
 }
